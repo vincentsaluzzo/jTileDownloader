@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<project name="jTileDownloader" default="all" basedir=".">
+	<property file="application.properties" />
+	<property name="target.java.version" value="1.5" />
+	<property environment="env" />
+	<target name="all" depends="sources,release" description="Generates all targets" />
+	<target name="run" description="jTileDownloader" depends="package">
+		<java jar="${basedir}/jar/jTileDownloader-${version}.jar" fork="true" />
+	</target>
+	<target name="sources" description="Generates the sources zip-file" depends="javadoc">
+		<zip destfile="${basedir}/release/jTileDownloader-src-${version}.zip">
+			<zipfileset dir="." includes="COPYING.txt" prefix="jTileDownloader" />
+			<zipfileset dir="." includes="README.txt" prefix="jTileDownloader" />
+			<zipfileset dir="." includes=".classpath" prefix="jTileDownloader" />
+			<zipfileset dir="." includes=".project" prefix="jTileDownloader" />
+			<zipfileset dir="." includes="application.properties" prefix="jTileDownloader" />
+			<zipfileset dir="." includes="build.xml" prefix="jTileDownloader" />
+			<zipfileset dir="${source.dir}" prefix="jTileDownloader/${source.dir}" />
+			<zipfileset dir=".settings" prefix="jTileDownloader/.settings" />
+			<zipfileset dir="doc" prefix="jTileDownloader/doc" />
+		</zip>
+	</target>
+	<target name="release" description="Generates the release zip-file" depends="package">
+		<zip destfile="${basedir}/release/jTileDownloader-${version}.zip">
+			<zipfileset dir="." includes="COPYING.txt" prefix="jTileDownloader" />
+			<zipfileset dir="." includes="README.txt" prefix="jTileDownloader" />
+			<zipfileset dir="jar" includes="jTileDownloader-${version}.jar" prefix="jTileDownloader" />
+		</zip>
+	</target>
+	<target name="javadoc" description="Generate JavaDoc">
+		<mkdir dir="${basedir}/${doc.dir}" />
+		<javadoc
+			access="private"
+			author="true"
+			destdir="${doc.dir}"
+			doctitle="jTileDownloader API"
+			nodeprecated="false"
+			nodeprecatedlist="false"
+			noindex="false"
+			nonavbar="false"
+			notree="false"
+			packagenames="*"
+			source="1.6"
+			sourcepath="${source.dir}"
+			splitindex="true"
+			use="true"
+			executable="${env.JAVA_HOME}/bin/javadoc"
+			version="true">
+			<link href="http://java.sun.com/javase/6/docs/api/" />
+		</javadoc>
+	</target>
+	<target name="package" depends="compile" description="Generates the jar-file">
+		<jar destfile="${basedir}/jar/jTileDownloader-${version}.jar" basedir="${basedir}/bin">
+			<manifest>
+				<attribute name="Main-Class" value="${main.class}" />
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="SplashScreen-Image" value="splash/splash.png" />
+			</manifest>
+			<fileset dir="${basedir}">
+				<include name="COPYING.txt" />
+				<include name="README" />
+			</fileset>
+		</jar>
+	</target>
+	<target name="compile" description="Compiles the source">
+		<mkdir dir="${basedir}/${bin.dir}" />
+		<javac destdir="${basedir}/${bin.dir}" srcdir="${basedir}/${source.dir}" debug="${build.debug}" debuglevel="${build.debuglevel}" source="${target.java.version}" target="${target.java.version}" includeantruntime="false" />
+		<copy todir="${basedir}/${bin.dir}/org/openstreetmap/gui/jmapviewer/images">
+			<fileset dir="${basedir}/${source.dir}/org/openstreetmap/gui/jmapviewer/images" />
+		</copy>
+		<copy todir="${basedir}/${bin.dir}" file="${basedir}/${source.dir}/logging.properties" />
+	</target>
+	<target name="clean" description="Remove most generated files">
+		<delete dir="${basedir}/${bin.dir}" />
+		<delete dir="${basedir}/${doc.dir}" />
+	</target>
+</project>

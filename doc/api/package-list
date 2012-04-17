@@ -1,0 +1,14 @@
+org.openstreetmap.fma.jtiledownloader
+org.openstreetmap.fma.jtiledownloader.cmdline
+org.openstreetmap.fma.jtiledownloader.config
+org.openstreetmap.fma.jtiledownloader.datatypes
+org.openstreetmap.fma.jtiledownloader.listener
+org.openstreetmap.fma.jtiledownloader.network
+org.openstreetmap.fma.jtiledownloader.tilelist
+org.openstreetmap.fma.jtiledownloader.views.errortilelist
+org.openstreetmap.fma.jtiledownloader.views.main
+org.openstreetmap.fma.jtiledownloader.views.main.inputpanel
+org.openstreetmap.fma.jtiledownloader.views.main.slippymap
+org.openstreetmap.fma.jtiledownloader.views.progressbar
+org.openstreetmap.gui.jmapviewer
+org.openstreetmap.gui.jmapviewer.interfaces
