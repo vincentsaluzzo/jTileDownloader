@@ -20,6 +20,7 @@ Added Features
 --------------
 
 * MapQuest Tiles Provider added
+* Modify of Thread slider up to 64 threads max (original is 4 threads max...)
 * Bugs corrections:
 	* replace Integer.compare (static method) with Integer.compareTo (non-static method) to success compile
 	
