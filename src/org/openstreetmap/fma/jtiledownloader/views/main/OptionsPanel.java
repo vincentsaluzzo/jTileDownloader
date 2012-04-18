@@ -18,6 +18,9 @@
  * You should have received a copy (see file COPYING.txt) of the GNU 
  * General Public License along with JTileDownloader.
  * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * Last Modification by Vincent Saluzzo <vincentsaluzzo@me.com>
+ *  on Wednesday 18th April at 10h55
  */
 
 package org.openstreetmap.fma.jtiledownloader.views.main;
@@ -54,7 +57,7 @@ public class OptionsPanel
     private JTextField _textMinimumAgeInDays = new JTextField();
 
     private JLabel _labelDownloadThreads = new JLabel("Download Threads");
-    private JSlider _sliderDownloadThreads = new JSlider(1, 4);
+    private JSlider _sliderDownloadThreads = new JSlider(1, 64);
 
     private JCheckBox _chkOverwriteExistingFiles = new JCheckBox("Overwrite existing files");
 

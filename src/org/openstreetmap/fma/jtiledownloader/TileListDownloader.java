@@ -18,6 +18,8 @@
  * You should have received a copy (see file COPYING.txt) of the GNU 
  * General Public License along with JTileDownloader.
  * If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * 
  */
 
 package org.openstreetmap.fma.jtiledownloader;
